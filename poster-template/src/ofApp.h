@@ -24,9 +24,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
     ofFbo fbo;
-    ofxPanel gui;
-    ofParameter<int> marginWidth;
-    ofColor marginColor;
     
-    void addMargin(const int& margin, const ofColor& color);
+    ofParameter<int> rad;
+    ofxPanel gui;
 };

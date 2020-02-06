@@ -1,9 +1,6 @@
 #include "ofApp.h"
 
 void ofApp::setup(){
-    // Set margin
-    marginColor.set(0, 255, 0);
-    
     // Setting up fbo
     fbo.allocate(A1_72DPI_WIDTH, A1_72DPI_HEIGHT, GL_RGBA);
     fbo.begin();
@@ -12,7 +9,7 @@ void ofApp::setup(){
     
     // Setting up gui
     gui.setup();
-    gui.add(marginWidth.set("margin", 0, 10, 0.05 * fbo.getWidth()));   // Set margin size
+    gui.add(rad.set("rad", 250, 500, 800));
 }
 
 void ofApp::update(){
@@ -20,11 +17,9 @@ void ofApp::update(){
     // Draw here
     ofBackground(0);
     ofSetColor(255);
-    ofDrawCircle(fbo.getWidth()/2, fbo.getHeight()/2, 500);
+    ofDrawCircle(fbo.getWidth()/2, fbo.getHeight()/2, rad);
     // End Draw here
     fbo.end();
-    
-    addMargin(this->marginWidth, this->marginColor);
 }
 
 void ofApp::draw(){
@@ -53,13 +48,3 @@ void ofApp::mouseExited(int x, int y){}
 void ofApp::windowResized(int w, int h){}
 void ofApp::gotMessage(ofMessage msg){}
 void ofApp::dragEvent(ofDragInfo dragInfo){}
-
-void ofApp::addMargin(const int& margin, const ofColor& color){
-    fbo.begin();
-    ofSetColor(color);
-    ofDrawRectangle(0, 0, fbo.getWidth(), margin);            // top margin
-    ofDrawRectangle(0, fbo.getHeight() - margin, fbo.getWidth(), margin);    // bottom margin
-    ofDrawRectangle(0, margin, margin, fbo.getHeight() - 2 * margin); // left margin
-    ofDrawRectangle(fbo.getWidth() - margin, margin, margin, fbo.getHeight() - 2 * margin); // right margin
-    fbo.end();
-}
