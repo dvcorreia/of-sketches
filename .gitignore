@@ -13,6 +13,8 @@
 *.plist
 *.xcconfig
 config.make
+Makefile
+makefile
 
 # build files
 openFrameworks.a
